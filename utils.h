@@ -4,9 +4,6 @@
 #include <string>
 #include <vector>
 #include "Account.h"
-#ifdef _WIN32
-#include <windows.h>
-#endif
 
 using namespace std;
 

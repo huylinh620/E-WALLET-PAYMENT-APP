@@ -14,4 +14,5 @@ void manager_update_user_info(vector<Account>& accounts);
 void manager_view_user_history();
 void show_all_transaction_history();
 void show_all_users(const vector<Account>& accounts);
+void manager_change_user_phone(vector<Account>& accounts);
 #endif

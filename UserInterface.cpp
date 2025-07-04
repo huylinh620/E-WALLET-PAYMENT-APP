@@ -151,6 +151,7 @@ Account* login(vector<Account>& accounts) {
     return acc;
 }
 
+
 // Change password functionality for users
 void change_password(Account* acc) {
     cout << "\n--- Change password ---\n";
@@ -204,7 +205,7 @@ void change_password(Account* acc) {
     }
 }
 
-void update_phone_with_otp(Account* acc, vector<Account>& accounts, bool is_manager = false) {
+void update_phone_with_otp(Account* acc, vector<Account>& accounts, bool is_manager) {
     string title = is_manager ? 
         "--- Update User Phone Number ---" : 
         "--- Update Your Phone Number ---";

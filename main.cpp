@@ -9,8 +9,9 @@ using namespace std;
 // From UserInterface.cpp:
 extern Account* register_account(vector<Account>& accounts);
 extern Account* login(vector<Account>& accounts);
-extern void change_password(Account* acc, vector<Account>& accounts);
-extern void update_phone_with_otp(Account* acc, vector<Account>& accounts);
+extern void change_password(Account* acc);
+extern void update_phone_with_otp(Account* acc, vector<Account>& accounts, bool is_manager = false);
+
 extern void manager_change_user_phone(vector<Account>& accounts);
 extern void show_all_users(const vector<Account>& accounts);
 
@@ -38,7 +39,8 @@ void user_menu(Account* acc, vector<Account>& accounts) {
                 cout << "Balance: " << acc->get_balance() << endl;
                 break;
             case 2:
-                // change_password(acc, accounts);
+                change_password(acc);
+                utils::save_accounts_to_file(accounts, "users.txt");
                 break;
             case 3:
                 system("cls");
@@ -46,9 +48,11 @@ void user_menu(Account* acc, vector<Account>& accounts) {
                 break;
             case 4:
                 transfer_points(accounts, acc);
+                utils::save_accounts_to_file(accounts, "users.txt");
                 break;
             case 5:
                 update_phone_with_otp(acc, accounts);
+                utils::save_accounts_to_file(accounts, "users.txt");
                 break;
             case 6:
                 show_transaction_history(acc->get_username());
@@ -75,9 +79,7 @@ void manager_menu(Account* manager, vector<Account>& accounts) {
         cout << "5. View transaction history\n";
         cout << "6. Update phone number\n";
         cout << "7. View all users\n";
-        cout << "8. Add new users\n";
-        cout << "9. Update user phone number\n";
-        cout << "10. Change password user\n";
+        cout << "8. Update user phone number\n"; 
         cout << "0. Exit\n";
         cout << "Select: ";
         cin >> choice;
@@ -96,13 +98,15 @@ void manager_menu(Account* manager, vector<Account>& accounts) {
             }
             case 2:
                 register_account(accounts);
+                utils::save_accounts_to_file(accounts, "users.txt");
                 break;
             case 3:
-                // change_password(manager, accounts);
+                change_password(manager);
                 utils::save_accounts_to_file(accounts, "users.txt");
                 break;
             case 4:
                 transfer_points(accounts, manager);
+                utils::save_accounts_to_file(accounts, "users.txt");
                 break;
             case 5:
                 system("cls");
@@ -121,49 +125,18 @@ void manager_menu(Account* manager, vector<Account>& accounts) {
                 }
                 break;
             case 6:
-                update_phone_with_otp(manager, accounts);
+                update_phone_with_otp(manager, accounts, true);
+                utils::save_accounts_to_file(accounts, "users.txt"); 
                 break;
             case 7:
                 system("cls");
                 show_all_users(accounts);
                 break;
-            case 8: {
-                system("cls");
-                Account* new_account = register_account(accounts);
-                if (new_account != nullptr) {
-                    if (new_account->is_temp_password()) {
-                        cout << "This account is assigned a temporary password. ";
-                        cout << "The user should change it upon first login.\n";
-                    }
-                    cout << "Account added successfully.\n";
-                }
-                break;
-            }
-            case 9:
+            case 8:
                 system("cls");
                 manager_change_user_phone(accounts);
+                utils::save_accounts_to_file(accounts, "users.txt");
                 break;
-            case 10: {
-                system("cls");
-                string username;
-                cout << "Enter username to change password: ";
-                cin >> username;
-                
-                Account* target = nullptr;
-                for (auto& acc : accounts) {
-                    if (acc.get_username() == username) {
-                        target = &acc;
-                        break;
-                    }
-                }
-                
-                if (target) {
-                    // change_password(target, accounts);
-                } else {
-                    cout << "User not found!\n";
-                }
-                break;
-            }
             case 0:
                 cout << "Good bye!\n";
                 break;
@@ -192,9 +165,9 @@ int main() {
                     system("cls");
                     if (new_account->is_temp_password()) {
                         cout << "You are using a temporary password. Please change your password now!\n";
-                        // change_password(new_account, accounts);
-                        utils::save_accounts_to_file(accounts, "users.txt");
+                        change_password(new_account);
                     }
+                    utils::save_accounts_to_file(accounts, "users.txt");
                     if (new_account->get_role() == Role::MANAGER)
                         manager_menu(new_account, accounts);
                     else
