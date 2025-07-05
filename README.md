@@ -1,4 +1,4 @@
-# E-WALLET POINT SYSTEM (C++)
+![image](https://github.com/user-attachments/assets/a69c17ca-2ead-460a-8126-2f027679246e)# E-WALLET POINT SYSTEM (C++)
 
 ## Mô tả
 Ứng dụng quản lý ví điểm thưởng, hỗ trợ phân quyền người dùng, bảo mật OTP, giao dịch chuyển điểm an toàn và quản lý bởi người quản lý.
@@ -7,7 +7,7 @@
 | Họ tên           | MSSV       | Vai trò            | Công việc được giao                    |
 |----------------  |---------   |------------------- |----------------------------------------|
 | Trần Huy Linh   | K24DTCN298 | Trưởng nhóm        |- Thiết kế kiến trúc hệ thống, xử lý OTP, xử lý ví điểm và lịch sử giao dịch, - Xử lý ví điểm và lịch sử giao dịch, - Đăng nhập, user đổi thông tin cá nhân, - Xem thông tin user, admin tạo account cho user, chỉnh sửa thông tin user|
-| Name  |  | Thành viên         | ----      | ---
+| Trần Văn Phát  |  | D24TXCN12-K         | Thành viên      | - Xử lý Đăng nhập, đăng ký
 
 ## Tính năng
 - Đăng ký / đăng nhập (mật khẩu tự động / thủ công)
