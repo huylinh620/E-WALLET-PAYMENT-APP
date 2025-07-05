@@ -53,7 +53,7 @@ void transfer_points(vector<Account>& accounts, Account* sender) {
             return;
         }
 
-        if (sender->get_balance() < amount) {
+        if (sender->get_role() != Role::MANAGER && sender->get_balance() < amount) {
             cout << "Transaction failed: insufficient balance.\n";
             Transaction tx{sender->get_username(), receiver_name, amount,
                            Transaction::get_current_time(), "FAILED"};

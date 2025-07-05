@@ -39,6 +39,7 @@ void user_menu(Account* acc, vector<Account>& accounts) {
                 cout << "Balance: " << acc->get_balance() << endl;
                 break;
             case 2:
+                system("cls");
                 change_password(acc);
                 utils::save_accounts_to_file(accounts, "users.txt");
                 break;
@@ -47,14 +48,17 @@ void user_menu(Account* acc, vector<Account>& accounts) {
                 cout << "Wallet balance: " << acc->get_balance() << " points\n";
                 break;
             case 4:
+                system("cls");
                 transfer_points(accounts, acc);
                 utils::save_accounts_to_file(accounts, "users.txt");
                 break;
             case 5:
+                system("cls");
                 update_phone_with_otp(acc, accounts);
                 utils::save_accounts_to_file(accounts, "users.txt");
                 break;
             case 6:
+                system("cls");
                 show_transaction_history(acc->get_username());
                 break;
             case 0:
@@ -97,14 +101,17 @@ void manager_menu(Account* manager, vector<Account>& accounts) {
                 break;
             }
             case 2:
+                system("cls");
                 register_account(accounts);
                 utils::save_accounts_to_file(accounts, "users.txt");
                 break;
             case 3:
+                system("cls");
                 change_password(manager);
                 utils::save_accounts_to_file(accounts, "users.txt");
                 break;
             case 4:
+                system("cls");
                 transfer_points(accounts, manager);
                 utils::save_accounts_to_file(accounts, "users.txt");
                 break;
@@ -125,6 +132,7 @@ void manager_menu(Account* manager, vector<Account>& accounts) {
                 }
                 break;
             case 6:
+                system("cls");
                 update_phone_with_otp(manager, accounts, true);
                 utils::save_accounts_to_file(accounts, "users.txt"); 
                 break;
