@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/a69c17ca-2ead-460a-8126-2f027679246e)# E-WALLET POINT SYSTEM (C++)
+# E-WALLET POINT SYSTEM (C++)
 
 ## Mô tả
 Ứng dụng quản lý ví điểm thưởng, hỗ trợ phân quyền người dùng, bảo mật OTP, giao dịch chuyển điểm an toàn và quản lý bởi người quản lý.
