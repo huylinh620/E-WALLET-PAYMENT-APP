@@ -1,5 +1,6 @@
 #include "Account.h"
 #include <sstream>
+#include <algorithm>
 
 using namespace std;
 
@@ -24,7 +25,13 @@ void Account::set_password_hash(const string& hashed, bool temp_pass) {
     hashed_password = hashed;
     password_is_temp = temp_pass;
 }
-void Account::set_balance(double b) { balance = b; }
+void Account::set_balance(double b) {
+    if (b < 0) {
+        cout << "The balance cannot be negative!\n";
+        return;
+    }
+    balance = b;
+}
 void Account::set_role(Role r) { role = r; }
 
 // Convert object to line of text
@@ -60,4 +67,10 @@ string Account::role_to_string(Role role) {
 }
 Role Account::string_to_role(const string& str) {
     return (str == "manager") ? Role::MANAGER : Role::USER;
+}
+
+// Check for valid phone number (number only, 10-11 characters)
+bool Account::is_valid_phone(const string& phone) {
+    if (phone.length() < 10 || phone.length() > 11) return false;
+    return all_of(phone.begin(), phone.end(), ::isdigit);
 }

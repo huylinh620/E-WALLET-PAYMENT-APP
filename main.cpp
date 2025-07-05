@@ -15,6 +15,25 @@ extern void update_phone_with_otp(Account* acc, vector<Account>& accounts, bool 
 extern void manager_change_user_phone(vector<Account>& accounts);
 extern void show_all_users(const vector<Account>& accounts);
 
+// Add account search function
+void search_user(const vector<Account>& accounts) {
+    string uname;
+    cout << "Enter the username you want to search for: ";
+    cin >> uname;
+    bool found = false;
+    for (const auto& acc : accounts) {
+        if (acc.get_username() == uname) {
+            cout << "Find: " << acc.get_username()
+                 << " | Phone: " << acc.get_phone()
+                 << " | Role: " << Account::role_to_string(acc.get_role())
+                 << " | Balance: " << acc.get_balance() << "\n";
+            found = true;
+            break;
+        }
+    }
+    if (!found) cout << "This account was not found.\n";
+}
+
 //  User Menu
 void user_menu(Account* acc, vector<Account>& accounts) {
     int choice;
@@ -83,7 +102,8 @@ void manager_menu(Account* manager, vector<Account>& accounts) {
         cout << "5. View transaction history\n";
         cout << "6. Update phone number\n";
         cout << "7. View all users\n";
-        cout << "8. Update user phone number\n"; 
+        cout << "8. Update user phone number\n";
+        cout << "9. Search user by username\n"; // Add this line
         cout << "0. Exit\n";
         cout << "Select: ";
         cin >> choice;
@@ -144,6 +164,10 @@ void manager_menu(Account* manager, vector<Account>& accounts) {
                 system("cls");
                 manager_change_user_phone(accounts);
                 utils::save_accounts_to_file(accounts, "users.txt");
+                break;
+            case 9:
+                system("cls");
+                search_user(accounts);
                 break;
             case 0:
                 cout << "Good bye!\n";

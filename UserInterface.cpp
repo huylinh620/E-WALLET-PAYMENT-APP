@@ -3,6 +3,7 @@
 #include <algorithm>
 #include "utils.h"
 #include "Account.h"
+#include <cctype> // Add this line to use isdigit
 
 using namespace std;
 
@@ -34,8 +35,14 @@ Account* register_account(vector<Account>& accounts) {
         return nullptr;
     }
 
-    cout << "Phone number: ";
-    cin >> phone;
+    // Check valid phone number
+    do {
+        cout << "Phone number: ";
+        cin >> phone;
+        if (!Account::is_valid_phone(phone)) {
+            cout << "Invalid phone number. Please re-enter.!\n";
+        }
+    } while (!Account::is_valid_phone(phone));
 
     cout << "Password (leave blank for automatic generation): ";
     cin.ignore();
@@ -218,8 +225,14 @@ void update_phone_with_otp(Account* acc, vector<Account>& accounts, bool is_mana
     }
 
     string new_phone;
-    cout << "New phone number: ";
-    cin >> new_phone;
+    // Check valid phone number when updating
+    do {
+        cout << "New phone number: ";
+        cin >> new_phone;
+        if (!Account::is_valid_phone(new_phone)) {
+            cout << "Invalid phone number. Please re-enter.!\n";
+        }
+    } while (!Account::is_valid_phone(new_phone));
 
     bool retry = true;
     while (retry) {

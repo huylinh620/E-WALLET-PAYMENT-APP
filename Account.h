@@ -46,6 +46,7 @@ public:
     // Helpers
     static std::string role_to_string(Role);
     static Role string_to_role(const std::string& str);
+    static bool is_valid_phone(const std::string& phone);
 };
 
 #endif
