@@ -6,11 +6,7 @@
 ##  Thành viên và phân công
 | Họ tên           | MSSV       | Vai trò            | Công việc được giao                    |
 |----------------  |---------   |------------------- |----------------------------------------|
-| Trần Huy Linh   | K24DTCN298 | Trưởng nhóm        | - Thiết kế kiến trúc hệ thống, xử lý OTP, Xử lý ví điểm và lịch sử giao dịch
-- Xử lý ví điểm và lịch sử giao dịch
-- Đăng nhập, đăng xuất. Đổi password cho user
-- Xem thông tin user. Admin tạo account cho user. Chỉnh sửa thông tin user
-|
+| Trần Huy Linh   | K24DTCN298 | Trưởng nhóm        |- Thiết kế kiến trúc hệ thống, xử lý OTP, xử lý ví điểm và lịch sử giao dịch, - Xử lý ví điểm và lịch sử giao dịch, - Đăng nhập, user đổi thông tin cá nhân, - Xem thông tin user, admin tạo account cho user, chỉnh sửa thông tin user|
 | Name  |  | Thành viên         | ----      | ---
 
 ## Tính năng
